@@ -10,7 +10,7 @@ task:
   script:
   - make package
   - cd work/pkg/
-  - pkg repo
+  - pkg repo .
   - >-
     curl -s -XPOST -d '{"name":"alligator", "licenses": ["Apache-2.0"], "vcs_url": "https://github.com/alligatormon/alligator.git", "desc":"alligator is aggregator for system and software metrics"}' -u$BINTRAY_USER:$BINTRAY_KEY -H "Content-Type:application/json" -H "Accept:application/json" https://api.bintray.com/packages/alligatormon/freebsd/
   - >-
