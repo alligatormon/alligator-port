@@ -10,7 +10,8 @@ COMMENT="alligator metrics aggregator"
 LICENCE=APACHE20
 
 MY_DEPENDS=    cmake:devel/cmake \
-               /usr/local/include/jansson.h:devel/jansson
+               /usr/local/include/jansson.h:devel/jansson \
+               /usr/local/include/cutter/cutter.h:devel/cutter
 
 BUILD_DEPENDS= ${MY_DEPENDS}
 RUN_DEPENDS=   ${MY_DEPENDS}
@@ -20,9 +21,8 @@ post-fetch:
 	${MKDIR} ${WRKDIR}/alligator
 
 WRKSRC=		${WRKDIR}/${PORTNAME}-${PORTVERSION}/
-#WRKSRC=		${WRKDIR}/../../
 
-USES=		cmake:noninja,insource
+USES=		cmake:noninja
 # PARSE PORT VERSION TO USE IT INSIDE CMAKE
 
 USE_RC_SUBR=	alligator
