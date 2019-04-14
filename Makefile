@@ -22,7 +22,7 @@ post-fetch:
 WRKSRC=		${WRKDIR}/${PORTNAME}-${PORTVERSION}/
 #WRKSRC=		${WRKDIR}/../../
 
-USES=		cmake:noninja,insource #:insource #,noninja
+USES=		cmake:noninja,insource
 # PARSE PORT VERSION TO USE IT INSIDE CMAKE
 
 USE_RC_SUBR=	alligator
