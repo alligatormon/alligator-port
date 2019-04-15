@@ -1,37 +1,32 @@
-freebsd_instance:
-  image: freebsd-11-2-release-amd64
-
-task:
+freebsd10_task:
+  freebsd_instance:
+    image: freebsd-10-4-release-amd64
   environment:
     BINTRAY_USER: ENCRYPTED[20dd7657d26f21cf839de6699fad3c1f3ed63db18aee488f03fa1e8a9949f4e3bb7ed0002327c7fb5cd0f970de5cae63]
     BINTRAY_KEY: ENCRYPTED[ab4338170e175f6a2ec36b706339488d84a37aea6c7138c9cfe9ce82678fb88bb2d3992440eae0889a0c1491ec87caf2]
     ALLIGATOR_TAG: 1.9.33
   install_script: pkg install -y libuv cmake jansson cutter
   script:
-  - make package
-  - cd work/pkg/
-  - pkg repo .
-  - >-
-    curl -s -XPOST -d '{"name":"alligator", "licenses": ["Apache-2.0"], "vcs_url": "https://github.com/alligatormon/alligator.git", "desc":"alligator is aggregator for system and software metrics"}' -u$BINTRAY_USER:$BINTRAY_KEY -H "Content-Type:application/json" -H "Accept:application/json" https://api.bintray.com/packages/alligatormon/freebsd/
-  - >-
-    curl -sT alligator-${ALLIGATOR_TAG}.txz -u$BINTRAY_USER:$BINTRAY_KEY -H "X-Bintray-Package:alligator" -H "X-Bintray-Version:${ALLIGATOR_TAG}" https://api.bintray.com/content/alligatormon/freebsd/
-  - >-
-    curl -s -XPOST -u$BINTRAY_USER:$BINTRAY_KEY -H "Content-Type:application/json" -H "Accept:application/json" https://api.bintray.com/content/alligatormon/freebsd/alligator/${ALLIGATOR_TAG}/publish
-  - >-
-    curl -s -XPOST -d '{"name":"alligator", "licenses": ["Apache-2.0"], "vcs_url": "https://github.com/alligatormon/alligator.git", "desc":"alligator is aggregator for system and software metrics"}' -u$BINTRAY_USER:$BINTRAY_KEY -H "Content-Type:application/json" -H "Accept:application/json" https://api.bintray.com/packages/alligatormon/freebsd/
-  - >-
-    curl -sT digests.txz -u$BINTRAY_USER:$BINTRAY_KEY -H "X-Bintray-Package:alligator" -H "X-Bintray-Version:${ALLIGATOR_TAG}" https://api.bintray.com/content/alligatormon/freebsd/
-  - >-
-    curl -s -XPOST -u$BINTRAY_USER:$BINTRAY_KEY -H "Content-Type:application/json" -H "Accept:application/json" https://api.bintray.com/content/alligatormon/freebsd/alligator/${ALLIGATOR_TAG}/publish
-  - >-
-    curl -s -XPOST -d '{"name":"alligator", "licenses": ["Apache-2.0"], "vcs_url": "https://github.com/alligatormon/alligator.git", "desc":"alligator is aggregator for system and software metrics"}' -u$BINTRAY_USER:$BINTRAY_KEY -H "Content-Type:application/json" -H "Accept:application/json" https://api.bintray.com/packages/alligatormon/freebsd/
-  - >-
-    curl -sT meta.txz -u$BINTRAY_USER:$BINTRAY_KEY -H "X-Bintray-Package:alligator" -H "X-Bintray-Version:${ALLIGATOR_TAG}" https://api.bintray.com/content/alligatormon/freebsd/
-  - >-
-    curl -s -XPOST -u$BINTRAY_USER:$BINTRAY_KEY -H "Content-Type:application/json" -H "Accept:application/json" https://api.bintray.com/content/alligatormon/freebsd/alligator/${ALLIGATOR_TAG}/publish
-  - >-
-    curl -s -XPOST -d '{"name":"alligator", "licenses": ["Apache-2.0"], "vcs_url": "https://github.com/alligatormon/alligator.git", "desc":"alligator is aggregator for system and software metrics"}' -u$BINTRAY_USER:$BINTRAY_KEY -H "Content-Type:application/json" -H "Accept:application/json" https://api.bintray.com/packages/alligatormon/freebsd/
-  - >-
-    curl -sT packagesite.txz -u$BINTRAY_USER:$BINTRAY_KEY -H "X-Bintray-Package:alligator" -H "X-Bintray-Version:${ALLIGATOR_TAG}" https://api.bintray.com/content/alligatormon/freebsd/
-  - >-
-    curl -s -XPOST -u$BINTRAY_USER:$BINTRAY_KEY -H "Content-Type:application/json" -H "Accept:application/json" https://api.bintray.com/content/alligatormon/freebsd/alligator/${ALLIGATOR_TAG}/publish
+  - sh deploy_to_bintray.sh freebsd10
+
+task:
+  freebsd_instance:
+    image: freebsd-11-2-release-amd64
+  environment:
+    BINTRAY_USER: ENCRYPTED[20dd7657d26f21cf839de6699fad3c1f3ed63db18aee488f03fa1e8a9949f4e3bb7ed0002327c7fb5cd0f970de5cae63]
+    BINTRAY_KEY: ENCRYPTED[ab4338170e175f6a2ec36b706339488d84a37aea6c7138c9cfe9ce82678fb88bb2d3992440eae0889a0c1491ec87caf2]
+    ALLIGATOR_TAG: 1.9.33
+  install_script: pkg install -y libuv cmake jansson cutter
+  script:
+  - sh deploy_to_bintray.sh freebsd11
+
+task:
+  freebsd_instance:
+    image: freebsd-12-0-release-amd64
+  environment:
+    BINTRAY_USER: ENCRYPTED[20dd7657d26f21cf839de6699fad3c1f3ed63db18aee488f03fa1e8a9949f4e3bb7ed0002327c7fb5cd0f970de5cae63]
+    BINTRAY_KEY: ENCRYPTED[ab4338170e175f6a2ec36b706339488d84a37aea6c7138c9cfe9ce82678fb88bb2d3992440eae0889a0c1491ec87caf2]
+    ALLIGATOR_TAG: 1.9.33
+  install_script: pkg install -y libuv cmake jansson cutter
+  script:
+  - sh deploy_to_bintray.sh freebsd12
