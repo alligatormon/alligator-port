@@ -1,6 +1,4 @@
 #/bin/sh
-portsnap fetch
-portsnap extract
 make package
 cd work/pkg/
 pkg repo .

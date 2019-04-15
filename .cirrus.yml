@@ -7,6 +7,7 @@ freebsd10_task:
     ALLIGATOR_TAG: 1.9.33
   install_script: pkg install -y libuv cmake jansson cutter
   script:
+  - portsnap fetch extract
   - sh deploy_to_bintray.sh freebsd10
 
 freebsd11_task:
@@ -29,4 +30,5 @@ freebsd12_task:
     ALLIGATOR_TAG: 1.9.33
   install_script: pkg install -y libuv cmake jansson cutter
   script:
+  - portsnap fetch extract
   - sh deploy_to_bintray.sh freebsd12
