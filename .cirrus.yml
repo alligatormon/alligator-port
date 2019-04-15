@@ -7,6 +7,7 @@ freebsd10_task:
     ALLIGATOR_TAG: 1.9.33
   install_script: pkg install -y libuv cmake jansson cutter
   script:
+  - echo 'ALLOW_UNSUPPORTED_SYSTEM=yes' >> /etc/make.conf
   - portsnap --interactive fetch extract
   - sh deploy_to_bintray.sh freebsd10
 
