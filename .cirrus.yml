@@ -4,7 +4,7 @@ freebsd10_task:
   environment:
     BINTRAY_USER: ENCRYPTED[20dd7657d26f21cf839de6699fad3c1f3ed63db18aee488f03fa1e8a9949f4e3bb7ed0002327c7fb5cd0f970de5cae63]
     BINTRAY_KEY: ENCRYPTED[ab4338170e175f6a2ec36b706339488d84a37aea6c7138c9cfe9ce82678fb88bb2d3992440eae0889a0c1491ec87caf2]
-    ALLIGATOR_TAG: 1.9.34
+    ALLIGATOR_TAG: 1.10.0
   install_script: pkg install -y libuv cmake jansson cutter
   script:
   - echo 'ALLOW_UNSUPPORTED_SYSTEM=yes' >> /etc/make.conf
@@ -17,7 +17,7 @@ freebsd11_task:
   environment:
     BINTRAY_USER: ENCRYPTED[20dd7657d26f21cf839de6699fad3c1f3ed63db18aee488f03fa1e8a9949f4e3bb7ed0002327c7fb5cd0f970de5cae63]
     BINTRAY_KEY: ENCRYPTED[ab4338170e175f6a2ec36b706339488d84a37aea6c7138c9cfe9ce82678fb88bb2d3992440eae0889a0c1491ec87caf2]
-    ALLIGATOR_TAG: 1.9.34
+    ALLIGATOR_TAG: 1.10.0
   install_script: pkg install -y libuv cmake jansson cutter
   script:
   - sh deploy_to_bintray.sh freebsd11
@@ -28,7 +28,7 @@ freebsd12_task:
   environment:
     BINTRAY_USER: ENCRYPTED[20dd7657d26f21cf839de6699fad3c1f3ed63db18aee488f03fa1e8a9949f4e3bb7ed0002327c7fb5cd0f970de5cae63]
     BINTRAY_KEY: ENCRYPTED[ab4338170e175f6a2ec36b706339488d84a37aea6c7138c9cfe9ce82678fb88bb2d3992440eae0889a0c1491ec87caf2]
-    ALLIGATOR_TAG: 1.9.34
+    ALLIGATOR_TAG: 1.10.0
   install_script: pkg install -y libuv cmake jansson cutter
   script:
   - portsnap --interactive fetch extract
