@@ -1,6 +1,6 @@
 
 PORTNAME=	alligator
-PORTVERSION=	1.10.0
+PORTVERSION=	1.10.4
 CATEGORIES=	net-mgmt
 MASTER_SITES=https://dl.bintray.com/alligatormon/sources/
 
